@@ -1,0 +1,58 @@
+Dan Cardamore
+dan@hld.ca
+--------------------------------------------------------------------------------
+Pollerizer CGI - Version 1.0
+
+	This program adds a vote/poll functionality to your webpage dynamically.  It allows only one vote per IP, ensuring that the results aren't just from double-voters.  It will show the user a question if they have not voted.  Once they have voted, it will then show them the results from then on.  It also provides a nice bar graph output.
+
+
+This program is distributed under the GNU GPL which is provided as part of the archive.
+
+--------------------------------------------------------------------------------
+This perl CGI allows you to add a poll to your website VERY easily.
+
+There are 6 files provided as part of the package:
+	COPYING - GNU General Public License
+	poll.pl - The actual program
+	poll.gif - The picture used to create the bar graph.  It is a 1x1 blue 
+		   pixel.
+	questions.dat - The file containing the question, and the answers
+	remote_ips.dat - The file containing the ips
+	results.dat - The Poll results
+
+--------------------------------------------------------------------------------
+
+Installation:
+
+1)  Edit the poll.pl program:
+	- make sure it has the correct path for perl on the first line.  You can
+	  find out where this is by typing "which perl".
+	- Edit everything in the "USER CONFIGURATION" Section at the top.  Pay 
+	  special attention to keep the "/" the way they are in the examples.
+	  Trailing "/" can be a problem.
+
+2)  Edit the question file:
+	- Open the filename that you specified "$question_file" to be with a 
+	  text editor.
+	- The first line should be the number of answers that are allowed.
+	  For example:  3 answers, put a 3.
+	- The second line should be the question you want to ask.  For example:
+	  "What came first" <without the quotation marks>
+	- Each line after that has one of the possible answers.  For example:
+	  "The Chicken!!!" <again, without the quotation marks>
+
+3)  Creck the file permissions:
+	- Ensure that the files have the correct permissions.  The LOG files 
+	  should be writable by everyone.  You can do this by typing:
+          "chmod +w *.dat" in the directory with the log files.
+	- Ensure that the poll.pl script is executable.  To do this type:
+	  "chmod +x *.pl" in the directory with the cgi script.
+
+
+THATS IT!!!  Now you just have to add it to your webpage.  Its very easy to do. Just make sure your webpage has a .shtml extension so that it can do Server Side Includes (SSI). 
+
+Then just add this text where you want to include the poll:
+<!--#exec cmd="/home/httpd/html/index/poll/poll.pl"-->
+Make sure that it is the correct path.
+
+If you have any questions, just e-mail me at dan@novas.cx
